@@ -43,7 +43,6 @@ app.get("/players/:id", (req, res, next) => {
                 error.httpcode = 404;
                 throw error;
             }
-            //res.writeHead(200, {"Content-Type": "application/json"});
             res.json(thePlayer);
         } catch (err) {
             next(err);
