@@ -1,0 +1,12 @@
+### GET for all players
+GET http://localhost:3000/players
+###
+
+### GET for one player that exists
+GET http://localhost:3000/players/acf2df37-8cd9-427a-a68e-871f781ac0a3
+###
+
+### GET for one player that not exists
+GET http://localhost:3000/players/acf2df3
+
+### 
