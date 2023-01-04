@@ -52,7 +52,7 @@ Content-Type: image/jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###
 
-### POST a new player with no image
+### POST (create) a new player with no image
 POST http://localhost:3000/players
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
@@ -73,5 +73,64 @@ Content-Disposition: form-data; name="data"
     "league": "Hockeyallsvenskan",
     "number": "76"
 }
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+###
+
+### PUT (update) a new player along with image
+PUT http://localhost:3000/players/3f1dd246-3875-4752-9d49-7d17509a307f
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{
+    "id": "3f1dd246-3875-4752-9d49-7d17509a307f",
+    "firstName": "AndersUPPDATERAD",
+    "lastName": "Eldebrink",
+    "dateOfBirth": "1985-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Djurgårdens IF",
+    "shoots": "left",
+    "position": "C/W",
+    "height": "192",
+    "weight": "99",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "18",
+    "image": ""
+}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="testimage.jpg"
+Content-Type: image/jpg
+
+< ./testimage.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+###
+
+### PUT (update) a new player with no image
+PUT http://localhost:3000/players/3f1dd246-3875-4752-9d49-7d17509a307f
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{
+    "id": "3f1dd246-3875-4752-9d49-7d17509a307f",
+    "firstName": "AndersUPPDATERAD",
+    "lastName": "Eldebrink",
+    "dateOfBirth": "1985-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Djurgårdens IF",
+    "shoots": "left",
+    "position": "C/W",
+    "height": "192",
+    "weight": "99",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "18",
+    "image": ""
+}
+
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###

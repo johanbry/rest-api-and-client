@@ -1,21 +1,5 @@
 [
   {
-    "id": "40270472-996f-4cec-b331-6af0850ce566",
-    "firstName": "Johan",
-    "lastName": "Brynie",
-    "dateOfBirth": "2023-01-12",
-    "nationality": "Svegdgfd",
-    "youthTeam": "SSj",
-    "shoots": "Left",
-    "position": "Center",
-    "height": "182",
-    "weight": "hgfhg",
-    "team": "SSK",
-    "league": "HA",
-    "number": "3",
-    "image": "1672763361932.jpg"
-  },
-  {
     "id": "19eebb70-408e-4fd9-ad3f-7427d8eb8d79",
     "firstName": "Johan",
     "lastName": "fds",
@@ -113,7 +97,7 @@
   },
   {
     "id": "3f1dd246-3875-4752-9d49-7d17509a307f",
-    "firstName": "Anders",
+    "firstName": "AndersUPPDATERAD",
     "lastName": "Eldebrink",
     "dateOfBirth": "1985-05-05",
     "nationality": "Swedish",
@@ -125,7 +109,7 @@
     "team": "Södertälje SK",
     "league": "Hockeyallsvenskan",
     "number": "18",
-    "image": "1672854529283.jpg"
+    "image": ""
   },
   {
     "id": "5cd9c320-63bf-496f-b0ed-d83998cc6f13",
@@ -142,5 +126,37 @@
     "league": "Hockeyallsvenskan",
     "number": "76",
     "image": "noimage.jpg"
+  },
+  {
+    "id": "242a297e-2fc8-4105-8916-8df6fd255b12",
+    "firstName": "Anders",
+    "lastName": "Eldebrink",
+    "dateOfBirth": "1985-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Djurgårdens IF",
+    "shoots": "left",
+    "position": "C/W",
+    "height": "192",
+    "weight": "99",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "18",
+    "image": "1672860302645.jpg"
+  },
+  {
+    "id": "12019da4-5bb1-4b97-abdf-bb5f7989092c",
+    "firstName": "Oto",
+    "lastName": "Hascak",
+    "dateOfBirth": "1985-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Djurgårdens IF",
+    "shoots": "left",
+    "position": "C/W",
+    "height": "192",
+    "weight": "99",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "76",
+    "image": ""
   }
 ]
