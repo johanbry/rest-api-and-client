@@ -18,8 +18,7 @@ app.get("/players", (req, res, next) => {
                 error.httpcode = 404;
                 throw error;
             }
-            console.log(data);
-            //res.writeHead(200, {"Content-Type": "application/json"});
+
             res.setHeader('Content-Type', 'application/json');
             res.send(data);
         } catch (err) {
@@ -27,5 +26,42 @@ app.get("/players", (req, res, next) => {
         }
     });    
 });
+
+/**
+ * Route to return one player.
+ */
+
+app.get("/players/:id", (req, res, next) => {
+    fs.readFile("data/players.json", "utf-8", function(err, data) {
+        try {
+            if (err) throw err;
+            const players = JSON.parse(data);
+            const thePlayer = players.find(player => player.id === req.params.id);
+
+            if (!thePlayer) {
+                const error = new Error("No such player");
+                error.httpcode = 404;
+                throw error;
+            }
+            //res.writeHead(200, {"Content-Type": "application/json"});
+            res.json(thePlayer);
+        } catch (err) {
+            next(err);
+        }
+    });
+});
+
+/**
+ * Middleware to catch errors and send response.
+ */
+
+app.use((error, req, res, next) => {
+    res.sendStatus(error.httpcode || 500);
+    console.log(error); 
+})
+
+/**
+ * Setup server to listen to specified port.
+ */
 
 app.listen(port, () => console.log("Server started at http://localhost port: " + port));
