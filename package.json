@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/johanbry/rest-api-and-client/issues"
   },
-  "homepage": "https://github.com/johanbry/rest-api-and-client#readme"
+  "homepage": "https://github.com/johanbry/rest-api-and-client#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
