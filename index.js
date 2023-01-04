@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const dataFilePath = "data/players.json";
 
 const fs = require("fs");
 const fsProm = require("fs/promises");
@@ -30,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
  */
 
 app.get("/players", (req, res, next) => {
-    fs.readFile("data/players.json", "utf-8", function(err, data) {
+    fs.readFile(dataFilePath, "utf-8", function(err, data) {
         try {
             if (err) throw err;
             if (data.length < 1) {
@@ -52,7 +53,7 @@ app.get("/players", (req, res, next) => {
  */
 
 app.get("/players/:id", (req, res, next) => {
-    fs.readFile("data/players.json", "utf-8", function(err, data) {
+    fs.readFile(dataFilePath, "utf-8", function(err, data) {
         try {
             if (err) throw err;
             const players = JSON.parse(data);
@@ -76,7 +77,7 @@ app.get("/players/:id", (req, res, next) => {
 
 app.delete("/players/:id", async (req, res, next) => {
     try {
-        const data = await fsProm.readFile("data/players.json");
+        const data = await fsProm.readFile(dataFilePath);
         const players = JSON.parse(data);
         const index = players.findIndex(player => player.id === req.params.id);
         
@@ -88,7 +89,7 @@ app.delete("/players/:id", async (req, res, next) => {
 
         players.splice(index, 1);
 
-        await fsProm.writeFile("data/players.json", JSON.stringify(players, null, 2));
+        await fsProm.writeFile(dataFilePath, JSON.stringify(players, null, 2));
         console.log("The file has been rewritten without deleted object!");
         res.sendStatus(204);
     } catch (err) {
@@ -101,7 +102,7 @@ app.delete("/players/:id", async (req, res, next) => {
  */
 
 app.delete("/players", (req, res, next) => {
-    fs.writeFile("data/players.json", "", (err) => {
+    fs.writeFile(dataFilePath, "", (err) => {
         try {
             if (err) throw err;
             console.log("All items deleted");
@@ -113,12 +114,12 @@ app.delete("/players", (req, res, next) => {
 });
 
 /**
- * Route to create a player
+ * Route to create (POST) a player
  */
 
 app.post("/players", upload.single('image'), async (req, res, next) => {
     try {
-        const fileData = await fsProm.readFile("data/players.json");
+        const fileData = await fsProm.readFile(dataFilePath);
         const newId = uuidv4();
         const newData = JSON.parse(req.body.data);
         let players = [];
@@ -150,10 +151,64 @@ app.post("/players", upload.single('image'), async (req, res, next) => {
 
         players.push(newPlayer);
 
-        await fsProm.writeFile("data/players.json", JSON.stringify(players, null, 2));
+        await fsProm.writeFile(dataFilePath, JSON.stringify(players, null, 2));
         console.log('The file has been updated with new player!');
         res.setHeader("Location", "/players/" + newId);
         res.json(newPlayer);
+    } catch (err) {
+        next(err);
+    }
+});
+
+/**
+ * Route to update (PUT) a player.
+ */
+
+app.put("/players/:id", upload.single('image'), async (req, res, next) => {
+    try {
+        const fileData = await fsProm.readFile(dataFilePath);
+        const id = req.params.id;
+        const newData = JSON.parse(req.body.data);
+        let players = [];
+
+        if (fileData.length > 1)
+            players = JSON.parse(fileData);
+
+        const index = players.findIndex(player => player.id === id);
+    
+        if (index === -1) {
+            const error = new Error("No such player to update!");
+            error.httpcode = 404;
+            throw error;
+        }
+
+        const updatedPlayer =
+        {
+            id: id,
+            firstName: newData.firstName,
+            lastName: newData.lastName,
+            dateOfBirth: newData.dateOfBirth,
+            nationality: newData.nationality,
+            youthTeam: newData.youthTeam,
+            shoots: newData.shoots,
+            position: newData.position,
+            height: newData.height,
+            weight: newData.weight,
+            team: newData.team,
+            league: newData.league,
+            number: newData.number,
+            image: newData.image
+        }
+
+        if (req.file)
+            updatedPlayer.image = req.file.filename;
+
+        players[index] = updatedPlayer;
+
+        await fsProm.writeFile(dataFilePath, JSON.stringify(players, null, 2));
+        console.log('The file has been rewritten with object updated!');
+        res.setHeader("Location", "/players/" + id);
+        res.json(updatedPlayer);
     } catch (err) {
         next(err);
     }
