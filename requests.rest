@@ -3,10 +3,21 @@ GET http://localhost:3000/players
 ###
 
 ### GET for one player that exists
-GET http://localhost:3000/players/acf2df37-8cd9-427a-a68e-871f781ac0a3
+GET http://localhost:3000/players/40270472-996f-4cec-b331-6af0850ce566
 ###
 
 ### GET for one player that not exists
 GET http://localhost:3000/players/acf2df3
+### 
 
+### DELETE all players
+DELETE http://localhost:3000/players
+### 
+
+### DELETE one player that exists
+DELETE http://localhost:3000/players/c702d4f9-bb88-464e-891d-5d9bcc37586b
+### 
+
+### DELETE one player that not exists
+DELETE http://localhost:3000/players/c702d4f9
 ### 

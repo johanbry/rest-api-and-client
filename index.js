@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 const fs = require("fs");
-
+const fsProm = require("fs/promises");
 
 /**
  * Route to return all players.
@@ -44,6 +44,48 @@ app.get("/players/:id", (req, res, next) => {
                 throw error;
             }
             res.json(thePlayer);
+        } catch (err) {
+            next(err);
+        }
+    });
+});
+
+/**
+ * Route delete one player. 
+ */
+
+app.delete("/players/:id", async (req, res, next) => {
+    try {
+        const data = await fsProm.readFile("data/players.json");
+        const players = JSON.parse(data);
+        const index = players.findIndex(player => player.id === req.params.id);
+        
+        if (index === -1) {
+            const error = new Error("No such player to delete");
+            error.httpcode = 404;
+            throw error;
+        }
+
+        players.splice(index, 1);
+
+        await fsProm.writeFile("data/players.json", JSON.stringify(players, null, 2));
+        console.log('The file has been rewritten without deleted object!');
+        res.sendStatus(204);
+    } catch (err) {
+        next(err);
+    }
+});
+
+/**
+ *  Route to delete all players
+ */
+
+app.delete("/players", (req, res, next) => {
+    fs.writeFile("data/players.json", "", (err) => {
+        try {
+            if (err) throw err;
+            console.log('All items deleted');
+            res.sendStatus(204);
         } catch (err) {
             next(err);
         }
