@@ -5,6 +5,26 @@ const port = 3000;
 const fs = require("fs");
 const fsProm = require("fs/promises");
 
+const cors = require("cors") 
+const { v4: uuidv4 } = require('uuid');
+const path = require('path');
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)) 
+  }
+});
+
+const upload = multer({ storage: storage });
+
+app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 /**
  * Route to return all players.
  */
@@ -19,7 +39,7 @@ app.get("/players", (req, res, next) => {
                 throw error;
             }
 
-            res.setHeader('Content-Type', 'application/json');
+            res.setHeader("Content-Type", "application/json");
             res.send(data);
         } catch (err) {
             next(err);
@@ -51,7 +71,7 @@ app.get("/players/:id", (req, res, next) => {
 });
 
 /**
- * Route delete one player. 
+ * Route to delete one player. 
  */
 
 app.delete("/players/:id", async (req, res, next) => {
@@ -69,7 +89,7 @@ app.delete("/players/:id", async (req, res, next) => {
         players.splice(index, 1);
 
         await fsProm.writeFile("data/players.json", JSON.stringify(players, null, 2));
-        console.log('The file has been rewritten without deleted object!');
+        console.log("The file has been rewritten without deleted object!");
         res.sendStatus(204);
     } catch (err) {
         next(err);
@@ -84,12 +104,59 @@ app.delete("/players", (req, res, next) => {
     fs.writeFile("data/players.json", "", (err) => {
         try {
             if (err) throw err;
-            console.log('All items deleted');
+            console.log("All items deleted");
             res.sendStatus(204);
         } catch (err) {
             next(err);
         }
     });
+});
+
+/**
+ * Route to create a player
+ */
+
+app.post("/players", upload.single('image'), async (req, res, next) => {
+    try {
+        const fileData = await fsProm.readFile("data/players.json");
+        const newId = uuidv4();
+        const newData = JSON.parse(req.body.data);
+        let players = [];
+
+        const newPlayer =
+        {
+            id: newId,
+            firstName: newData.firstName,
+            lastName: newData.lastName,
+            dateOfBirth: newData.dateOfBirth,
+            nationality: newData.nationality,
+            youthTeam: newData.youthTeam,
+            shoots: newData.shoots,
+            position: newData.position,
+            height: newData.height,
+            weight: newData.weight,
+            team: newData.team,
+            league: newData.league,
+            number: newData.number,
+        }
+
+        if (req.file)
+            newPlayer.image = req.file.filename;
+        else   
+            newPlayer.image = "";
+
+        if (fileData.length > 1)
+            players = JSON.parse(fileData);
+
+        players.push(newPlayer);
+
+        await fsProm.writeFile("data/players.json", JSON.stringify(players, null, 2));
+        console.log('The file has been updated with new player!');
+        res.setHeader("Location", "/players/" + newId);
+        res.json(newPlayer);
+    } catch (err) {
+        next(err);
+    }
 });
 
 /**
