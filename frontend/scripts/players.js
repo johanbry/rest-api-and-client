@@ -19,12 +19,12 @@ function renderPlayers(players) {
 
     const wrapper = document.getElementById("cards-wrapper");
 
-  /*   if (!players || players.length === 0) {
+    if (!players || players.length === 0) {
         const div = document.createElement("div");
         div.innerHTML = "Inga spelare";
         wrapper.appendChild(div);
         return;
-    } */
+    }
 
     const container = document.createElement("div");
     container.classList.add("row", "row-cols-1", "row-cols-sm-2", "row-cols-md-3", "row-cols-lg-4", "g-4");
