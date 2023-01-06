@@ -45,8 +45,7 @@ function renderPlayers(players) {
         div2.appendChild(playerName);
 
         const img = document.createElement("img");
-        //img.setAttribute("src", "http://localhost:3000/" + player.image);
-        img.setAttribute("src", "../testimage.jpg");
+        img.setAttribute("src", "http://localhost:3000/" + (player.image || "noimage.png"));
         img.setAttribute("alt", player.firstName + " " + player.lastName);
         img.classList.add("card-img-top");
 
