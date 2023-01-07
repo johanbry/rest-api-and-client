@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/addplayer.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lägg till spelare</title>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black" data-bs-theme="dark">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Hockey Player DB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-link" href="index.html">Spelare</a>
+                    <a class="nav-link" href="addplayer.html">Lägg till</a>
+                    </div>
+                </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <h1 class="mb-5">Lägg till ny spelare</h1>
+        <form>
+            <div class="row">
+                <div class="mb-3 col-sm-6">
+                <label for="first-name" class="form-label">Förnamn</label>
+                <input type="text" class="form-control" id="first-name" required>
+                </div>
+                <div class="mb-3 col-sm-6">
+                    <label for="last-name" class="form-label">Efternamn</label>
+                    <input type="text" class="form-control" id="last-name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="date-of-birth" class="form-label">Födelsedatum</label>
+                    <input type="date" class="form-control" id="date-of-birth">
+                </div>
+                <div class="mb-3 col-3">
+                    <label for="height" class="form-label">Längd</label>
+                    <input type="number" class="form-control" id="height">
+                    <div id="height-help" class="form-text">Ange längd i cm.</div>
+                </div>            
+                <div class="mb-3 col-3">
+                    <label for="weight" class="form-label">Vikt</label>
+                    <input type="number" class="form-control" id="weight">
+                    <div id="weight-help" class="form-text">Ange vikt i kg.</div>
+                </div>    
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm-6">
+                    <label for="nationality" class="form-label">Nationalitet</label>
+                    <input type="text" class="form-control" id="nationality">
+                </div>
+                <div class="mb-3 col-sm-6">
+                    <label for="youth-team" class="form-label">Moderklubb</label>
+                    <input type="text" class="form-control" id="youth-team">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm-5">
+                    <label for="shoots" class="form-label">Fattning</label>
+                    <select class="form-select" aria-label="Default select example" id="shoots">
+                        <option value="Vänster">Vänster</option>
+                        <option value="Höger">Höger</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-sm-5">
+                    <label for="position" class="form-label">Position</label>
+                    <select class="form-select" aria-label="Default select example" id="position">
+                        <option value="Målvakt">Målvakt</option>
+                        <option value="Back">Back</option>
+                        <option value="Forward">Forward</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-sm-2">
+                    <label for="number" class="form-label">Nummer</label>
+                    <input type="text" class="form-control" id="number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm-6">
+                    <label for="team" class="form-label">Lag</label>
+                    <input type="text" class="form-control" id="team">
+                </div>
+                <div class="mb-3 col-sm-6">
+                    <label for="league" class="form-label">Liga</label>
+                    <input type="text" class="form-control" id="league">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Spelarbild</label>
+                <input type="file" class="form-control" id="image">
+            </div>
+
+            <button type="submit" class="btn btn-success">Spara</button>
+          </form>
+    </main>
+
+    <footer class="wrapper text-center">
+        Inlämningsuppgift gjord av Johan Brynielsson. REST API med Node/Express och klientgränssnitt som använder API.
+    </footer>
+    
+</body>
+</html>

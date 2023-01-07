@@ -7,6 +7,7 @@ function populatePlayer(player) {
 
     document.getElementById("first-name").textContent = player.firstName;
     document.getElementById("last-name").textContent = player.lastName;
+    document.getElementById("number").textContent = `#${player.number}`;;
     document.getElementById("team").textContent = player.team;
     document.getElementById("league").textContent = player.league;
     document.getElementById("position").textContent = player.position;

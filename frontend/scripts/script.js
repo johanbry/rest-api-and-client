@@ -1,8 +1,8 @@
 const apiUrl = "http://localhost:3000/players/";
 
 /**
- * function getPlayers
- * @returns array with player objects (Promise)
+ * Gets players from API.
+ * @returns {array} Returns array with player objects (Promise).
  */
 
  async function getPlayers() {
@@ -21,9 +21,9 @@ const apiUrl = "http://localhost:3000/players/";
 }
 
 /**
- * function getPlayer
- * @param {*} id 
- * @returns player object (Promise)
+ * Gets a player from API.
+ * @param {string} id
+ * @returns {object} Player object (Promise).
  */
 
 async function getPlayer(id) {
@@ -41,9 +41,9 @@ async function getPlayer(id) {
 }
 
 /**
- * function deletePlayer
- * @param {*} id 
- * @returns response (Promise)
+ * Deletes a player with API.
+ * @param {string} id 
+ * @returns {object} Response object (Promise)
  */
 
 async function deletePlayer(id) {
@@ -61,9 +61,40 @@ async function deletePlayer(id) {
 }
 
 /**
- * 
- * @param {*} message 
- * @param {*} bsMessageType (optional)
+ * Creates a player with API.
+ * @param {object} player
+ * @param {file} image
+ * @returns {object} Player object created including id
+ */
+
+async function createPlayer(player, image) {
+    try {
+        const formData = new FormData();
+        formData.append("data", JSON.stringify(player));
+        if (image)
+            formData.append("image", image);
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            body: formData,
+            headers: { }
+        });
+
+        if (!response.ok) {
+            const error = new Error("Could not create player. Status code: " + response.status);
+            throw error;
+        }
+        return player = await response.json(); 
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+/**
+ * Shows custom message on web page.
+ * @param {string} message 
+ * @param {string} [bsMessageType] Bootstrap alert message type.
  */
 
 function showMessage(message, bsMessageType) {
