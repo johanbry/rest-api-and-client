@@ -27,7 +27,7 @@ function populatePlayer(player) {
     image.setAttribute("src", "http://localhost:3000/" + (player.image || "noimage.png"));
     image.setAttribute("alt", `${player.firstName} ${player.lastName}`);
 
-    document.getElementById("btn-edit").setAttribute("href", `addedit.html${player.id}`);
+    document.getElementById("btn-edit").setAttribute("href", `editplayer.html?id=${player.id}`);
 
     document.getElementById("btn-delete-confirm").setAttribute("data-player-id", player.id);
 }

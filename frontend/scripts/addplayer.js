@@ -42,7 +42,6 @@ form.addEventListener('submit', async (ev) => {
     console.log(image);
     await createPlayer(player, image)
     .then((player) => {
-        showMessage("Spelare har sparats", "alert-success");
         window.location = "player.html?id=" + player.id;
     })
     .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "alert-danger"))

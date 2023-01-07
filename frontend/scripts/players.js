@@ -8,7 +8,7 @@ function renderPlayers(players) {
     }
 
     const container = document.createElement("div");
-    container.classList.add("row", "row-cols-1", "row-cols-sm-2", "row-cols-md-3", "row-cols-lg-4", "g-4");
+    container.classList.add("row", "row-cols-1", "row-cols-sm-2", "row-cols-md-3", "row-cols-lg-4", "g-4", "d-flex", "justify-content-center");
 
     players.forEach(player => {
         const div1 = document.createElement("div");
