@@ -99,13 +99,10 @@ async function createPlayer(player, image) {
 
  async function updatePlayer(player, image) {
     try {
-        console.log(player);
         const formData = new FormData();
         formData.append("data", JSON.stringify(player));
         if (image)
             formData.append("image", image);
-
-        console.log(player);
 
         const response = await fetch(apiUrl + player.id, {
             method: 'PUT',

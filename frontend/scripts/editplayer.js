@@ -47,6 +47,14 @@ function populateFormData(player) {
     document.getElementById("team").value = player.team;
     document.getElementById("league").value = player.league;
     document.getElementById("number").value = player.number;
+
+    setImage(player);
+}
+
+function setImage(player) {
+    const image = document.getElementById("player-image");
+    image.setAttribute("src", "http://localhost:3000/" + (player.image || "noimage.png"));
+    image.setAttribute("alt", `${player.firstName} ${player.lastName}`);
 }
 
 async function init() {
@@ -65,12 +73,10 @@ form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const updPlayer = collectFormData();
     const updImage = document.getElementById("image").files[0];
-    console.log(updPlayer);
-    console.log(updImage);
     await updatePlayer(updPlayer, updImage)
     .then((player) => {
-        showMessage("Spelare har uppdaterats!", "alert-success");
-        // Uppdatera bild som visas
+        setImage(player);
+        showMessage("Spelare har uppdaterats!", "alert-success");    
     })
     .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "alert-danger"))
 });
