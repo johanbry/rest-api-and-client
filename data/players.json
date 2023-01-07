@@ -1,6 +1,6 @@
 [
   {
-    "id": "242a297e-2fc8-4105-8916-8df6fd255b12",
+    "id": "8c6d532f-ab41-4328-b3a3-3e0fef652e18",
     "firstName": "Anders",
     "lastName": "Eldebrink",
     "dateOfBirth": "1985-05-05",
@@ -13,10 +13,26 @@
     "team": "Södertälje SK",
     "league": "Hockeyallsvenskan",
     "number": "18",
-    "image": "1672860302645.jpg"
+    "image": "1673094942861.jpg"
   },
   {
-    "id": "12019da4-5bb1-4b97-abdf-bb5f7989092c",
+    "id": "2055ec53-05ec-4acc-8bcd-af71c7b2a0fb",
+    "firstName": "Anders",
+    "lastName": "Eldebrink",
+    "dateOfBirth": "1985-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Djurgårdens IF",
+    "shoots": "left",
+    "position": "C/W",
+    "height": "192",
+    "weight": "99",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "18",
+    "image": "1673094944590.jpg"
+  },
+  {
+    "id": "f5076630-f3ea-4667-8c9a-e4e2b606393d",
     "firstName": "Oto",
     "lastName": "Hascak",
     "dateOfBirth": "1985-05-05",
