@@ -90,6 +90,39 @@ async function createPlayer(player, image) {
     }
 }
 
+/**
+ * Updates a player with API.
+ * @param {object} player
+ * @param {file} image
+ * @returns {object} Player object updated
+ */
+
+ async function updatePlayer(player, image) {
+    try {
+        console.log(player);
+        const formData = new FormData();
+        formData.append("data", JSON.stringify(player));
+        if (image)
+            formData.append("image", image);
+
+        console.log(player);
+
+        const response = await fetch(apiUrl + player.id, {
+            method: 'PUT',
+            body: formData,
+            headers: { }
+        });
+
+        if (!response.ok) {
+            const error = new Error("Could not update player. Status code: " + response.status);
+            throw error;
+        }
+        return player = await response.json(); 
+    } catch (error) {
+        throw error;
+    }
+}
+
 
 /**
  * Shows custom message on web page.
