@@ -1,29 +1,10 @@
 
-async function loadPlayers() {
-    try {
-        const response = await fetch("http://localhost:3000/players/");
-
-        if (!response.ok) {
-            const error = new Error("Could not get data. Status code: " + response.status);
-            throw error;
-        }
-        const players = await response.json();
-        renderPlayers(players);  
-    } catch (error) {
-        console.log(error);
-        //renderErrorMessage(???);
-    }
-}
-
 function renderPlayers(players) {
 
     const wrapper = document.getElementById("cards-wrapper");
 
     if (!players || players.length === 0) {
-        const div = document.createElement("div");
-        div.innerHTML = "Inga spelare";
-        wrapper.appendChild(div);
-        return;
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-light");
     }
 
     const container = document.createElement("div");
@@ -93,8 +74,12 @@ function renderPlayers(players) {
     });
 }
 
-function init() {
-    loadPlayers();
+async function init() {
+    await getPlayers()
+    .then((players) => renderPlayers(players))
+    .catch((err) => {
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-danger");
+    });
 }
 
 init();

@@ -1,29 +1,8 @@
 
-async function loadPlayer(id) {
-    try {
-        const response = await fetch("http://localhost:3000/players/" + id);
-
-        if (!response.ok) {
-            const error = new Error("Could not get data. Status code: " + response.status);
-            throw error;
-        }
-        const player = await response.json();
-        renderPlayer(player);  
-    } catch (error) {
-        console.log(error);
-        //renderErrorMessage(???);
-    }
-}
-
-function renderPlayer(player) {
-
-    const wrapper = document.getElementById("cards-wrapper");
-
+function populatePlayer(player) {
     if (!player) {
-        const div = document.createElement("div");
-        div.innerHTML = "Ingen spelare hittades";
-        wrapper.appendChild(div);
-        return;
+        showMessage("Spelare kunde inte laddas in.", "alert-danger");
+        document.getElementById("player").classList.add("d-none");
     }
 
     document.getElementById("first-name").textContent = player.firstName;
@@ -47,20 +26,36 @@ function renderPlayer(player) {
     image.setAttribute("src", "http://localhost:3000/" + (player.image || "noimage.png"));
     image.setAttribute("alt", `${player.firstName} ${player.lastName}`);
 
-    const editBtn = document.getElementById("btn-edit");
-    editBtn.setAttribute("href", `addedit.html${player.id}`);
+    document.getElementById("btn-edit").setAttribute("href", `addedit.html${player.id}`);
+
+    document.getElementById("btn-delete-confirm").setAttribute("data-player-id", player.id);
 }
 
-function init() {
+async function init() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    loadPlayer(id);
+    await getPlayer(id)
+    .then((player) => populatePlayer(player))
+    .catch((err) => {
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-danger");
+        document.getElementById("player").classList.add("d-none");
+    });
 }
 
-document.getElementById("btn-delete").addEventListener("click", () => {
+const confirmModal = new bootstrap.Modal(document.getElementById("modal-delete-confirm"));
 
+document.getElementById("btn-delete").addEventListener("click", () => {
+    confirmModal.toggle();
 });
 
-
+document.getElementById("btn-delete-confirm").addEventListener("mouseup", async (ev) => {
+    const id = ev.target.dataset.playerId;
+    await deletePlayer(id)
+    .then(() => window.location = "index.html")
+    .catch((err) => {
+        confirmModal.toggle();
+        showMessage("Spelare kunde inte tas bort. (" + err + ")", "alert-danger");
+    });
+});
 
 init();
