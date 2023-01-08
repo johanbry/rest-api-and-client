@@ -1,12 +1,12 @@
 # Rest API med klientgränssnitt (Inlämningsuppgift)
 
 Rest API skapat med Node.js och Express samt ett fristående klientgränssnitt.
-Resursen är hockeyspelardatabas.
+Resursen är en hockeyspelardatabas.
 Projektet är en inlämningsuppgift i kursen Systemutveckling på Medieinstitutet.
 
 ## Detaljbeskrivning
 
-Rest API är skapat med Node.s och Express. Resursen är en hockeyspelardatabas där varje spelare har ett antal egenskaper. Till varje spelare hör också en bild som kan laddas upp via endpoints:en POST och PUT till mappen "uploads".
+Rest API är skapat med Node.js och Express. Resursen är en hockeyspelardatabas där varje spelare har ett antal egenskaper. Till varje spelare hör också en bild som kan laddas upp via endpoints:en POST och PUT till mappen "uploads".
 Klientgränssnittet är gjort med HTML, CSS, Bootstrap och Javascript.
 Man kan se en översikt av alla spelare, se en spelare i detalj, uppdatera och ta bort spelare.
 
@@ -26,12 +26,12 @@ Man kan se en översikt av alla spelare, se en spelare i detalj, uppdatera och t
 ### Starta server
 
 - Klona eller spara ner projektet.
-- I terminalen skriv "npm install" för att installera dependencies.
+- I terminalen gå till projetets mapp och skriv "npm install" för att installera dependencies.
 - Skriv "npm start" (nodemon) eller "node index.js" för att starta servern.
 
 ### Testa endpoints
 
-- Filen requests.rest innehåller API-anrop för att testa endpoints med hjälp av VS Code REST Client. (bildfil som används vid POST och PUT finns.)
+- Filen requests.rest innehåller API-anrop för att testa endpoints med hjälp av VS Code REST Client. (bildfil som används vid POST och PUT finns i projektmappen.)
 
 ### Klientgränssnitt
 
