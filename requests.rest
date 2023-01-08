@@ -130,3 +130,7 @@ Content-Disposition: form-data; name="data"
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###
+
+### DELETE all players
+DELETE http://localhost:3000/players
+### 
