@@ -13,13 +13,13 @@ Man kan se en översikt av alla spelare, se en spelare i detalj, uppdatera och t
 ## Uppfyllda krav
 
 - Innehåller endpoints för att hämta ett eller alla objekt (GET), radera ett eller alla objekt (DELETE), skapa ett nytt objekt (POST) samt uppdatera ett objekt (PUT).
-- Datan sparas i en JSON-fil (data/players.json).
+- Datan sparas i en JSON-fil ("data/players.json").
 - JSON-filen uppdateras vid anrop till API:et.
 - Om data/objekt saknas vid anrop svaras det med statuskod 404.
-- En REST Client-fil (requests.rest) har skapats för att testa anrop.
-- Ett klientgränssnitt har skapats som använder endpoints:en. Vid redigering av data är formulär förifyllt med befintlig information.
+- En REST Client-fil ("requests.rest") har skapats för att testa anrop.
 - Git & GitHub har använts.
-- README.md-fil finns
+- README.md-fil finns.
+- Ett klientgränssnitt har skapats som använder endpoints:en. Vid redigering av data är formulär förifyllt med befintlig information.
 
 ## Köra och testa projektet
 
