@@ -1,12 +1,18 @@
 import { getPlayers } from "./playersApi.js";
 import { showMessage } from "./message.js";
 
+
+/**
+ * Renders players on webpage.
+ * @param {object} players 
+ */
+
 function renderPlayers(players) {
 
     const wrapper = document.getElementById("cards-wrapper");
 
     if (!players || players.length === 0) {
-        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-light");
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "message-container", "alert-light");
     }
 
     const container = document.createElement("div");
@@ -75,6 +81,10 @@ function renderPlayers(players) {
         wrapper.appendChild(container);
     });
 }
+
+/**
+ * Initializes webpage to render content.
+ */
 
 async function init() {
     await getPlayers()

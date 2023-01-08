@@ -1,6 +1,12 @@
 import { createPlayer } from "./playersApi.js";
 import { showMessage } from "./message.js";
 
+
+/**
+ * Collects values from form to create a player object.
+ * @returns {object} player
+ */
+
 function collectFormData() {
     const firstName = document.getElementById("first-name");
     const lastName = document.getElementById("last-name");
@@ -34,6 +40,10 @@ function collectFormData() {
 }
 
 const form = document.querySelector("form");
+
+/**
+ * Creates player on form submit.
+ */
 
 form.addEventListener('submit', async (ev) => {
     ev.preventDefault();

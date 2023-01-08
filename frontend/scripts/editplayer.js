@@ -1,6 +1,12 @@
 import { getPlayer, updatePlayer } from "./playersApi.js";
 import { showMessage } from "./message.js";
 
+
+/**
+ * Collects data from form to create a player object.
+ * @returns {object} player
+ */
+
 function collectFormData() {
     const id = document.querySelector("form").dataset.playerId;
     const existingimage = document.querySelector("form").dataset.playerImage;
@@ -37,6 +43,12 @@ function collectFormData() {
     return player;
 }
 
+
+/**
+ * Populates form with values of player.
+ * @param {object} player 
+ */
+
 function populateFormData(player) {
     form.reset();
 
@@ -58,11 +70,22 @@ function populateFormData(player) {
     setImage(player);
 }
 
+
+/**
+ * Set image of the player.
+ * @param {object} player 
+ */
+
 function setImage(player) {
     const image = document.getElementById("player-image");
     image.setAttribute("src", "http://localhost:3000/" + (player.image || "noimage.png"));
     image.setAttribute("alt", `${player.firstName} ${player.lastName}`);
 }
+
+
+/**
+ * Initializes webpage.
+ */
 
 async function init() {
     const params = new URLSearchParams(window.location.search);
@@ -75,6 +98,10 @@ async function init() {
 }
 
 const form = document.querySelector("form");
+
+/**
+ * Updates player on form submit.
+ */
 
 form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
