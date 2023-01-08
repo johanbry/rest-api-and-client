@@ -33,7 +33,6 @@ function collectFormData() {
     return player;
 }
 
-
 const form = document.querySelector("form");
 
 form.addEventListener('submit', async (ev) => {
@@ -46,7 +45,7 @@ form.addEventListener('submit', async (ev) => {
     .then((player) => {
         window.location = "player.html?id=" + player.id;
     })
-    .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "alert-danger"))
+    .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "message-container", "alert-danger"))
 });
     
     
