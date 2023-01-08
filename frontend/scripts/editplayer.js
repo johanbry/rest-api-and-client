@@ -3,6 +3,7 @@ import { showMessage } from "./message.js";
 
 function collectFormData() {
     const id = document.querySelector("form").dataset.playerId;
+    const existingimage = document.querySelector("form").dataset.playerImage;
     const firstName = document.getElementById("first-name");
     const lastName = document.getElementById("last-name");
     const dateOfBirth = document.getElementById("date-of-birth");
@@ -30,13 +31,17 @@ function collectFormData() {
         weight: weight.value,
         team: team.value,
         league: league.value,
-        number: number.value
+        number: number.value,
+        image: existingimage
     }
     return player;
 }
 
 function populateFormData(player) {
+    form.reset();
+
     document.querySelector("form").setAttribute("data-player-id", player.id);
+    document.querySelector("form").setAttribute("data-player-image", player.image);
     document.getElementById("first-name").value = player.firstName;
     document.getElementById("last-name").value = player.lastName;
     document.getElementById("date-of-birth").value = player.dateOfBirth;
@@ -75,12 +80,15 @@ form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const updPlayer = collectFormData();
     const updImage = document.getElementById("image").files[0];
+    console.log(document.getElementById("image"));
+    console.log(document.getElementById("image").files[0]);
     await updatePlayer(updPlayer, updImage)
     .then((player) => {
-        setImage(player);
         showMessage("Spelare har uppdaterats!", "message-container", "alert-success");    
+        setImage(player);
+        populateFormData(player);
     })
-    .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "message-container", "alert-danger"))
+    .catch((err) => showMessage("Ett fel uppstod. (" + err + ")", "message-container", "alert-danger"))
 });
 
 init();

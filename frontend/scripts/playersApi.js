@@ -102,6 +102,7 @@ export async function createPlayer(player, image) {
     try {
         const formData = new FormData();
         formData.append("data", JSON.stringify(player));
+        
         if (image)
             formData.append("image", image);
 

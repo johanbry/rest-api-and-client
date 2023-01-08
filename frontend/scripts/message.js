@@ -12,6 +12,5 @@ export function showMessage(message, placeInElement, bsMessageType = "alert-ligh
     alertDiv.classList.add("alert", bsMessageType, "mt-3", "mb-3");
     alertDiv.innerHTML = message;
     const container = document.getElementById(placeInElement);
-    container.innerHTML = "";
     container.insertAdjacentElement("afterbegin", alertDiv);
 }
