@@ -14,5 +14,53 @@
     "league": "Hockeyallsvenskan",
     "number": "20",
     "image": "1673184300143.jpg"
+  },
+  {
+    "id": "702be752-b307-45bd-a63d-a05aff4e9c27",
+    "firstName": "Dragan",
+    "lastName": "Umicevic",
+    "dateOfBirth": "1984-10-09",
+    "nationality": "Swedish",
+    "youthTeam": "Köpings IK",
+    "shoots": "Höger",
+    "position": "Forward",
+    "height": "187",
+    "weight": "89",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "84",
+    "image": "1673185512189.jpg"
+  },
+  {
+    "id": "b5fbb6b3-6190-49fc-97e8-36aaac98b99c",
+    "firstName": "Daniel",
+    "lastName": "Norbe",
+    "dateOfBirth": "1989-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Karlskrona",
+    "shoots": "Vänster",
+    "position": "Back",
+    "height": "192",
+    "weight": "99",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "27",
+    "image": ""
+  },
+  {
+    "id": "29307e39-dfe2-4ec5-a0b4-3010adb57e92",
+    "firstName": "Albin",
+    "lastName": "Carlsson",
+    "dateOfBirth": "1989-05-05",
+    "nationality": "Swedish",
+    "youthTeam": "Finspång",
+    "shoots": "Vänster",
+    "position": "Back",
+    "height": "185",
+    "weight": "89",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "15",
+    "image": "1673185980331.jpg"
   }
 ]

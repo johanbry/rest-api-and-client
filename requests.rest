@@ -3,19 +3,15 @@ GET http://localhost:3000/players
 ###
 
 ### GET for one player that exists
-GET http://localhost:3000/players/40270472-996f-4cec-b331-6af0850ce566
+GET http://localhost:3000/players/702be752-b307-45bd-a63d-a05aff4e9c27
 ###
 
 ### GET for one player that not exists
 GET http://localhost:3000/players/acf2df3
 ### 
 
-### DELETE all players
-DELETE http://localhost:3000/players
-### 
-
 ### DELETE one player that exists
-DELETE http://localhost:3000/players/c702d4f9-bb88-464e-891d-5d9bcc37586b
+DELETE http://localhost:3000/players/702be752-b307-45bd-a63d-a05aff4e9c27
 ### 
 
 ### DELETE one player that not exists
@@ -30,25 +26,25 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 Content-Disposition: form-data; name="data"
 
 {
-    "firstName": "Anders",
-    "lastName": "Eldebrink",
-    "dateOfBirth": "1985-05-05",
+    "firstName": "Albin",
+    "lastName": "Carlsson",
+    "dateOfBirth": "1989-05-05",
     "nationality": "Swedish",
-    "youthTeam": "Djurgårdens IF",
-    "shoots": "left",
-    "position": "C/W",
-    "height": "192",
-    "weight": "99",
+    "youthTeam": "Köpings IK",
+    "shoots": "Vänster",
+    "position": "Back",
+    "height": "185",
+    "weight": "89",
     "team": "Södertälje SK",
     "league": "Hockeyallsvenskan",
-    "number": "18"
+    "number": "15"
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="image"; filename="testimage.jpg"
+Content-Disposition: form-data; name="image"; filename="testimage3.jpg"
 Content-Type: image/jpg
 
-< ./testimage.jpg
+< ./testimage3.jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###
 
@@ -60,43 +56,43 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 Content-Disposition: form-data; name="data"
 
 {
-    "firstName": "Oto",
-    "lastName": "Hascak",
-    "dateOfBirth": "1985-05-05",
+    "firstName": "Daniel",
+    "lastName": "Norbe",
+    "dateOfBirth": "1989-05-05",
     "nationality": "Swedish",
-    "youthTeam": "Djurgårdens IF",
-    "shoots": "left",
-    "position": "C/W",
+    "youthTeam": "Karlskrona",
+    "shoots": "Vänster",
+    "position": "Back",
     "height": "192",
     "weight": "99",
     "team": "Södertälje SK",
     "league": "Hockeyallsvenskan",
-    "number": "76"
+    "number": "27"
 }
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###
 
 ### PUT (update) a new player along with image
-PUT http://localhost:3000/players/3f1dd246-3875-4752-9d49-7d17509a307f
+PUT http://localhost:3000/players/702be752-b307-45bd-a63d-a05aff4e9c27
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {
-    "id": "3f1dd246-3875-4752-9d49-7d17509a307f",
-    "firstName": "AndersUPPDATERAD",
-    "lastName": "Eldebrink",
-    "dateOfBirth": "1985-05-05",
+   "id": "702be752-b307-45bd-a63d-a05aff4e9c27",
+    "firstName": "Dragan",
+    "lastName": "Umicevic",
+    "dateOfBirth": "1984-10-09",
     "nationality": "Swedish",
-    "youthTeam": "Djurgårdens IF",
-    "shoots": "left",
-    "position": "C/W",
-    "height": "192",
-    "weight": "99",
+    "youthTeam": "Köpings IK",
+    "shoots": "Höger",
+    "position": "Forward",
+    "height": "185",
+    "weight": "89",
     "team": "Södertälje SK",
     "league": "Hockeyallsvenskan",
-    "number": "18",
+    "number": "84",
     "image": ""
 }
 
@@ -109,26 +105,26 @@ Content-Type: image/jpg
 ###
 
 ### PUT (update) a new player with no image
-PUT http://localhost:3000/players/3f1dd246-3875-4752-9d49-7d17509a307f
+PUT http://localhost:3000/players/702be752-b307-45bd-a63d-a05aff4e9c27
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {
-    "id": "3f1dd246-3875-4752-9d49-7d17509a307f",
-    "firstName": "AndersUPPDATERAD",
-    "lastName": "Eldebrink",
-    "dateOfBirth": "1985-05-05",
+   "id": "702be752-b307-45bd-a63d-a05aff4e9c27",
+    "firstName": "Dragan",
+    "lastName": "Umicevic",
+    "dateOfBirth": "1984-10-09",
     "nationality": "Swedish",
-    "youthTeam": "Djurgårdens IF",
-    "shoots": "left",
-    "position": "C/W",
-    "height": "192",
-    "weight": "99",
+    "youthTeam": "Köpings IK",
+    "shoots": "Höger",
+    "position": "Forward",
+    "height": "186",
+    "weight": "89",
     "team": "Södertälje SK",
     "league": "Hockeyallsvenskan",
-    "number": "18",
+    "number": "84",
     "image": ""
 }
 

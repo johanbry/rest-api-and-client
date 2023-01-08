@@ -1,6 +1,12 @@
 import { getPlayer, deletePlayer } from "./playersApi.js";
 import { showMessage } from "./message.js";
 
+
+/**
+ * Sets content values on webpage.
+ * @param {object} player 
+ */
+
 function populatePlayer(player) {
     if (!player) {
         showMessage("Spelare kunde inte laddas in.", "alert-danger");
@@ -34,6 +40,10 @@ function populatePlayer(player) {
     document.getElementById("btn-delete-confirm").setAttribute("data-player-id", player.id);
 }
 
+/**
+ * Initializes webpage.
+ */
+
 async function init() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
@@ -47,9 +57,18 @@ async function init() {
 
 const confirmModal = new bootstrap.Modal(document.getElementById("modal-delete-confirm"));
 
+/**
+ * Triggers confirm dialog on button click.
+ */
+
 document.getElementById("btn-delete").addEventListener("click", () => {
     confirmModal.toggle();
 });
+
+
+/**
+ * Delete player on button click.
+ */
 
 document.getElementById("btn-delete-confirm").addEventListener("mouseup", async (ev) => {
     const id = ev.target.dataset.playerId;
