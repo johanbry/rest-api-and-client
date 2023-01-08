@@ -2,14 +2,16 @@
 /**
  * Shows custom message on web page.
  * @param {string} message 
- * @param {string} [bsMessageType] Bootstrap alert message type.
+ * @param {string} placeInElement id of element to place message in.
+ * @param {string} [bsMessageType] Bootstrap alert message type (optional).
  */
 
-export function showMessage(message, bsMessageType) {
+export function showMessage(message, placeInElement, bsMessageType = "alert-light") {
     const alertDiv = document.createElement("div");
     alertDiv.setAttribute("role", "alert");
-    alertDiv.classList.add("alert", bsMessageType || "alert-light", "mt-3", "mb-2");
+    alertDiv.classList.add("alert", bsMessageType, "mt-3", "mb-3");
     alertDiv.innerHTML = message;
-
-    document.querySelector("main").appendChild(alertDiv);
+    const container = document.getElementById(placeInElement);
+    container.innerHTML = "";
+    container.insertAdjacentElement("afterbegin", alertDiv);
 }

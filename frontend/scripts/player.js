@@ -17,7 +17,7 @@ function populatePlayer(player) {
     document.getElementById("nationality").textContent = player.nationality;
     document.getElementById("youth-team").textContent = player.youthTeam;
     document.getElementById("height").textContent = `${player.height} cm`;
-    document.getElementById("weight").textContent = `${player.height} kg`;
+    document.getElementById("weight").textContent = `${player.weight} kg`;
     document.getElementById("date-of-birth").textContent = player.dateOfBirth;
 
     const dob = new Date(player.dateOfBirth);
@@ -40,7 +40,7 @@ async function init() {
     await getPlayer(id)
     .then((player) => populatePlayer(player))
     .catch((err) => {
-        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-danger");
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "message-container", "alert-danger");
         document.getElementById("player").classList.add("d-none");
     });
 }
@@ -57,7 +57,7 @@ document.getElementById("btn-delete-confirm").addEventListener("mouseup", async 
     .then(() => window.location = "index.html")
     .catch((err) => {
         confirmModal.toggle();
-        showMessage("Spelare kunde inte tas bort. (" + err + ")", "alert-danger");
+        showMessage("Spelare kunde inte tas bort. (" + err + ")", "message-container", "alert-danger");
     });
 });
 

@@ -65,7 +65,7 @@ async function init() {
     await getPlayer(id)
     .then((player) => populateFormData(player))
     .catch((err) => {
-        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-danger");
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "message-container", "alert-danger");
     });
 }
 
@@ -78,9 +78,9 @@ form.addEventListener('submit', async (ev) => {
     await updatePlayer(updPlayer, updImage)
     .then((player) => {
         setImage(player);
-        showMessage("Spelare har uppdaterats!", "alert-success");    
+        showMessage("Spelare har uppdaterats!", "message-container", "alert-success");    
     })
-    .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "alert-danger"))
+    .catch((err) => showMessage("Spelare kunde inte sparas. (" + err + ")", "message-container", "alert-danger"))
 });
 
 init();

@@ -80,7 +80,7 @@ async function init() {
     await getPlayers()
     .then((players) => renderPlayers(players))
     .catch((err) => {
-        showMessage("Spelare kunde inte laddas in. (" + err + ")", "alert-danger");
+        showMessage("Spelare kunde inte laddas in. (" + err + ")", "message-container", "alert-danger");
     });
 }
 
