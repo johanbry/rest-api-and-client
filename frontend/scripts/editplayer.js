@@ -116,7 +116,7 @@ form.addEventListener('submit', async (ev) => {
     .catch((err) => showMessage("Ett fel uppstod. (" + err + ")", "message-container", "alert-danger"))
 });
 
-init();
+init(); 
     
     
     
