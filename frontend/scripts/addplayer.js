@@ -1,3 +1,5 @@
+import { createPlayer } from "./playersApi.js";
+import { showMessage } from "./message.js";
 
 function collectFormData() {
     const firstName = document.getElementById("first-name");
