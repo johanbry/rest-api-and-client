@@ -1,3 +1,5 @@
+import { getPlayers } from "./playersApi.js";
+import { showMessage } from "./message.js";
 
 function renderPlayers(players) {
 

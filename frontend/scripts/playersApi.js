@@ -5,7 +5,7 @@ const apiUrl = "http://localhost:3000/players/";
  * @returns {array} Returns array with player objects (Promise).
  */
 
- async function getPlayers() {
+ export async function getPlayers() {
     try {
         const response = await fetch(apiUrl);
 
@@ -26,7 +26,7 @@ const apiUrl = "http://localhost:3000/players/";
  * @returns {object} Player object (Promise).
  */
 
-async function getPlayer(id) {
+export async function getPlayer(id) {
     try {
         const response = await fetch(apiUrl + id);
 
@@ -34,7 +34,8 @@ async function getPlayer(id) {
             const error = new Error("Could not get data. Status code: " + response.status);
             throw error;
         }
-        return player = await response.json(); 
+        const player = await response.json();
+        return player; 
     } catch (error) {
         throw error;
     }
@@ -46,7 +47,7 @@ async function getPlayer(id) {
  * @returns {object} Response object (Promise)
  */
 
-async function deletePlayer(id) {
+export async function deletePlayer(id) {
     try {
        const response = await fetch(apiUrl+ id, {method: "DELETE"});
 
@@ -67,7 +68,7 @@ async function deletePlayer(id) {
  * @returns {object} Player object created including id
  */
 
-async function createPlayer(player, image) {
+export async function createPlayer(player, image) {
     try {
         const formData = new FormData();
         formData.append("data", JSON.stringify(player));
@@ -97,7 +98,7 @@ async function createPlayer(player, image) {
  * @returns {object} Player object updated
  */
 
- async function updatePlayer(player, image) {
+ export async function updatePlayer(player, image) {
     try {
         const formData = new FormData();
         formData.append("data", JSON.stringify(player));
@@ -118,20 +119,4 @@ async function createPlayer(player, image) {
     } catch (error) {
         throw error;
     }
-}
-
-
-/**
- * Shows custom message on web page.
- * @param {string} message 
- * @param {string} [bsMessageType] Bootstrap alert message type.
- */
-
-function showMessage(message, bsMessageType) {
-    const alertDiv = document.createElement("div");
-    alertDiv.setAttribute("role", "alert");
-    alertDiv.classList.add("alert", bsMessageType || "alert-light", "mt-3", "mb-2");
-    alertDiv.innerHTML = message;
-
-    document.querySelector("main").appendChild(alertDiv);
 }
