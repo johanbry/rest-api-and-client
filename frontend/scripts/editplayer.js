@@ -107,8 +107,6 @@ form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const updPlayer = collectFormData();
     const updImage = document.getElementById("image").files[0];
-    console.log(document.getElementById("image"));
-    console.log(document.getElementById("image").files[0]);
     await updatePlayer(updPlayer, updImage)
     .then((player) => {
         showMessage("Spelare har uppdaterats!", "message-container", "alert-success");    
