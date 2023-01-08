@@ -133,4 +133,4 @@ Content-Disposition: form-data; name="data"
 
 ### DELETE all players
 DELETE http://localhost:3000/players
-### 
+###
