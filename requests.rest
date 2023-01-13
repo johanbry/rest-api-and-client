@@ -18,6 +18,10 @@ DELETE http://localhost:3000/players/702be752-b307-45bd-a63d-a05aff4e9c27
 DELETE http://localhost:3000/players/c702d4f9
 ### 
 
+### DELETE all players
+DELETE http://localhost:3000/players
+###
+
 ### POST a new player along with image
 POST http://localhost:3000/players
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -131,6 +135,31 @@ Content-Disposition: form-data; name="data"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###
 
-### DELETE all players
-DELETE http://localhost:3000/players
+### PUT (update) a new player with no image NOT EXISTING PLAYER
+PUT http://localhost:3000/players/702be7
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{
+   "id": "702be752-b307-45bd-a63d-a05aff4e9c27",
+    "firstName": "Dragan",
+    "lastName": "Umicevic",
+    "dateOfBirth": "1984-10-09",
+    "nationality": "Swedish",
+    "youthTeam": "Köpings IK",
+    "shoots": "Höger",
+    "position": "Forward",
+    "height": "186",
+    "weight": "89",
+    "team": "Södertälje SK",
+    "league": "Hockeyallsvenskan",
+    "number": "84",
+    "image": ""
+}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
 ###
+
+
